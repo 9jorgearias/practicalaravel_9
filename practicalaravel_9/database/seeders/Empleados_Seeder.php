@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use App\Models\Empleado\Empleado;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -17,7 +18,7 @@ class Empleados_Seeder extends Seeder
     {
         $cargo = DB::table('cargos')->where(['nombre'=>'Instructor'])->value('id');
 
-    DB::table('empleados')->insert([
+        Empleado::create([
         'nombre'=> 'Dony Cardenas',
         'email' => 'cardenasdonny@gmail.com',
         'direccion' => 'calle 123456',
@@ -25,7 +26,7 @@ class Empleados_Seeder extends Seeder
         'idCargo' => $cargo
     ]);
 
-    DB::table('empleados')->insert([
+    Empleado::create([
         'nombre'=> 'Jorge Arias',
         'email' => 'jorge@gmail.com',
         'direccion' => 'calle 7890',
@@ -33,7 +34,7 @@ class Empleados_Seeder extends Seeder
         'idCargo' => 2
     ]);
 
-    DB::table('empleados')->insert([
+    Empleado::create([
         'nombre'=> 'Emanuel Ospina',
         'email' => 'Eospina@gmail.com',
         'direccion' => 'calle 35647',
