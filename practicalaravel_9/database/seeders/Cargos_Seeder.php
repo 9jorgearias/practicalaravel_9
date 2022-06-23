@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+
 use App\Models\Empleado\Cargo;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -27,6 +28,8 @@ class Cargos_Seeder extends Seeder
         Cargo::create([
             'nombre'=> 'Coordinador',
         ]);
+
+        Cargo::factory()->times(10)->create();
 
     }
 }
