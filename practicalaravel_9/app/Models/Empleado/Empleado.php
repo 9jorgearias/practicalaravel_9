@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Empleado extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+    public function cargoEmpleado(){
+        return $this->belongsTo(Cargo::class, 'idCargo');
+    }
 }
