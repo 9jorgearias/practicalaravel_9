@@ -14,29 +14,7 @@ use App\Http\Controllers\EmpleadosController;
 |
 */
 
-Route::get('/', function () {
-    return view('prueba.principal');
-});
 
-Route::get('/jorge', function () {
-    return view('prueba.jorge');
-});
-
-
-// Route::get('/index', function () {
-//     return view('empleados.index');
-// });
-Route::get('/crear', function () {
-    return view('empleados.crear');
-});
-
-Route::get('/mostrar', function () {
-    return view('empleados.mostar');
-});
-
-Route::get('/editar', function () {
-    return view('empleados.editar');
-});
 
 
 
@@ -45,4 +23,5 @@ Route::get('empleados/crear', [EmpleadosController::class, 'crear'])->name('empl
 Route::get('empleados/mostrar', [EmpleadosController::class, 'mostrar'])->name('empleadoMostrar');
 Route::get('empleados/editar', [EmpleadosController::class, 'editar'])->name('empleadoEditar');
 Route::post('empleados', [EmpleadosController::class, 'guardar'])->name('empleadoGuardar');
+Route::put('empleados/{empleado}', [EmpleadosController::class, 'actualizar'])->name('empleadoActualizar');
 

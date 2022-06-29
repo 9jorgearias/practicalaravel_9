@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Empleado\Cargo;
+use App\Models\Empleado\Empleado;
+use App\Http\Controllers\EmpleadosController;
 
 class EmpleadosController extends Controller
 {
@@ -27,6 +30,20 @@ class EmpleadosController extends Controller
     }
 
     public function guardar(){
+
+        $campos=request()->validate([
+            'nombre'=>'required|min:3',
+            'edad'=>'required',
+            'direccion'=>'required',
+            'email'=>'required|email'
+    
+        ]);
+        Empleado::create($campos);
+    
+        return redirect('empleados')->with('mensaje', 'Empleado guardado');
+    }
+    public function actualizar(Empleado $empleado){
+
         $campos=request()->validate([
             'nombre'=>'required|min:3',
             'edad'=>'required',
@@ -35,8 +52,8 @@ class EmpleadosController extends Controller
             'idCargo'=>'required'
     
         ]);
-        Empleado::create($campos);
+        $empleado->update($campos);
     
-        return redirect('empleados');
+        return redirect('empleados')->with('mensaje', 'Empleado actualizado');
     }
 }
